@@ -9,39 +9,44 @@ def binary_to_decimal(binary_number):
 
 
 def main():
-    print("Number Converter")
-    print("1. Decimal to Binary")
-    print("2. Binary to Decimal")
+    while True:
+        print("\nNumber Converter")
+        print("1. Decimal to Binary")
+        print("2. Binary to Decimal")
+        print("3. Exit")
 
-    try:
-        choice = int(input("Choose an option (1 or 2): "))
+        try:
+            choice = int(input("Choose an option (1, 2, or 3): "))
 
-        if choice == 1:
-            decimal = int(input("Enter a decimal number: "))
+            if choice == 1:
+                decimal = int(input("Enter a decimal number: "))
 
-            if decimal < 0:
-                print("Please enter a non-negative decimal number.")
-                return
+                if decimal < 0:
+                    print("Please enter a non-negative decimal number.")
+                    continue
 
-            result = decimal_to_binary(decimal)
-            print(f"Binary: {result}")
+                print(f"Binary: {decimal_to_binary(decimal)}")
 
-        elif choice == 2:
-            binary = input("Enter a binary number: ").strip()
+            elif choice == 2:
+                binary = input("Enter a binary number: ").strip()
 
-            if not binary or any(digit not in "01" for digit in binary):
-                print("Please enter a valid binary number.")
-                return
+                if not binary or any(digit not in "01" for digit in binary):
+                    print("Please enter a valid binary number.")
+                    continue
 
-            result = binary_to_decimal(binary)
-            print(f"Decimal: {result}")
+                print(f"Decimal: {binary_to_decimal(binary)}")
 
-        else:
-            print("Please choose option 1 or 2.")
+            elif choice == 3:
+                print("Goodbye!")
+                break
 
-    except ValueError:
-        print("Please enter a valid number.")
+            else:
+                print("Please choose option 1, 2, or 3.")
+
+        except ValueError:
+            print("Please enter a valid number.")
 
 
 if __name__ == "__main__":
     main()
+    
